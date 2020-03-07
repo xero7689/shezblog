@@ -59,7 +59,7 @@
 	    <h2 class="blog-post-title">{{ article.title }}</h2>
 	    <p class="blog-post-abstract text-secondary">{{ article.abstract }}</h4>
             <hr>
-	    {{ article.content }}
+	    {{ article.content|safe }}
 	    <hr>
 	    {% for label in article.lables.all %}
 	    <a class='text-primary'>#{{ label.name }} </a>
