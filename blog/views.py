@@ -5,7 +5,7 @@ from .models import Article, Author
 
 
 def blog(request):
-    latest_articles = Article.objects.order_by('create_date')[:5]
-    context = {'latest_articles': latest_articles}
-    print(context)
+    author = Author.objects.get(name='shz')
+    archives = author.article_set.dates('create_date', 'month', order='DESC')
+    context = {'author': author, 'archives': archives}
     return render(request, 'blog.html', context)
