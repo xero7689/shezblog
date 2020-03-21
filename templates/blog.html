@@ -57,7 +57,7 @@
       </div>
       <div class="row">
         <div class="col-md-8 blog-main">
-	  {% for article in author.article_set.all|slice:":5" %}
+	  {% for article in author.article_set.all|slice:"::-5" %}
           <div class="blog-post p-3 mb-4 shadow rounded">
 	    <p class="blog-post-meta">{{ article.create_date }}</p>
         <hr>
