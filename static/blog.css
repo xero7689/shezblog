@@ -2,3 +2,6 @@ body {background-color: #EAEAEA;}
 .blog-title {font-family: 'Anton', sans-serif;}
 .blog-desc {font-family: 'Anton', sans-serif;}
 .blog-post {background-color: #F9F9F9;}
+.blog-sidebar {color: #404040;}
+.header-divider {margin: 0em;}
+/*.blog-sidebar-header {background-color: #C5C5C5;}*/
