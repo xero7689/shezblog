@@ -81,6 +81,7 @@
         </div><!-- /.blog-main -->
 
         <aside class="col-md-4 blog-sidebar">
+
           <div class="mb-4 shadow bg-light rounded">
 	    <div class="blog-sidebar-header pl-3 py-2 font-weight-bold">
 	        <a>About Me</a>
@@ -88,6 +89,19 @@
 	    <hr class="header-divider">
 	    <div class="pl-3 py-2 blog_sidebar_content">
 	    {{ author.about | safe }}
+	    </div>
+          </div>
+
+          <div class="mb-4 shadow bg-light rounded">
+	    <div class="blog-sidebar-header pl-3 py-2 font-weight-bold">
+	        <a>Recent Articles</a>
+	    </div>
+	    <hr class="header-divider">
+	    <div class="pl-3 py-2 blog_sidebar_content">
+	    {% for article in author.article_set.all|slice:"::-1" %}
+	        <a class="blog-sidebar-recent-article" href="#">{{ article.title }}</a>
+		<br/>
+	    {% endfor %}
 	    </div>
           </div>
 
