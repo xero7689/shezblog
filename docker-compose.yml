@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+    db:
+      image: postgres
+      volumes:
+        - blog-postgres-data:/var/lib/postgresql/data
+      environment:
+        - POSTGRES_DB=postgres
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=peter1234
+      ports:
+        - "5432:5432"
+    web:
+      build: .
+      command: python manage.py runserver 0.0.0.0:8000
+      volumes:
+        - .:/shezblog
+      ports:
+        - "8000:8000"
+      depends_on:
+        - migration
+        - db
+    migration:
+      build: .
+      command: python manage.py migrate
+      depends_on:
+        - db
+
+
+volumes:
+    blog-postgres-data:
