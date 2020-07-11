@@ -5,7 +5,15 @@ import sys
 
 
 def main():
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'shez_blog.settings')
+    project_env = os.environ.get('SHZ_BLOG_ENV')
+    if project_env == "Test":
+        DJANGO_SETTINGS_MODULE = 'shez_blog.settings_test'
+    elif project_env == "Product":
+        DJANGO_SETTINGS_MODULE = 'shez_blog.settings_product'
+    else:
+        DJANGO_SETTINGS_MODULE = 'shez_blog.settings'
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', DJANGO_SETTINGS_MODULE)
+    print('[Manage.py] Use %s as prject settings.' % DJANGO_SETTINGS_MODULE)
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
